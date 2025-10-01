@@ -117,7 +117,7 @@ useEffect(() => {
     <div className="h-screen bg-gradient-to-br from-violet-100 via-white to-indigo-200 flex flex-col items-center justify-between p-6 sm:p-10"> 
       {/* Header Section */} 
       <div className="w-full max-w-6xl flex flex-col sm:flex-row justify-between items-center gap-6"> 
-        <div className="text-3xl sm:text-4xl ml-6 font-extrabold text-violet-700 tracking-wide"> 
+        <div className="text-5xl ml-6 font-extrabold text-violet-700 tracking-wide"> 
           Stage <span className="text-black">0{stage?.username}</span> 
         </div> 
 
@@ -128,17 +128,18 @@ useEffect(() => {
         </div> 
       </div> 
 
-      {/* NOW Section */} 
+      {/* NOW Section */}
+      <div className="flex flex-col  items-center"> 
       <div className="text-center" ref={nowRef}> 
-        <div className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-5xl sm:text-7xl font-extrabold py-5 px-16 rounded-[3rem] shadow-xl animate-pulse"> NOW </div> 
+        <div className=" w-80 bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-5xl sm:text-7xl font-extrabold py-5 px-16 rounded-[3rem] shadow-xl animate-pulse"> NOW </div> 
       </div> 
 
       {/* Program Info */} 
-      <div className="w-full max-w-4xl text-center" ref={titleRef}> 
+      <div className="w-full mt-8 max-w-4xl text-center" ref={titleRef}> 
         <p className="text-7xl sm:text-8xl font-extrabold text-gray-800 drop-shadow-md">  {currentProgram?.program} </p> 
         <p className="text-3xl sm:text-4xl mt-4 font-semibold text-gray-600">  ({currentProgram?.category}) </p> 
       </div> 
-
+</div>
       {/* Next Program Card */} 
       <div className=" min-w-3xl mt-8 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white rounded-3xl shadow-2xl py-4 px-6 flex flex-col sm:flex-row items-center justify-between gap-6" ref={nextProgramRef} > 
         <div className="flex items-center flex-col justify-center w-30 h-10 text-black bg-white rounded-2xl shadow-lg"> 

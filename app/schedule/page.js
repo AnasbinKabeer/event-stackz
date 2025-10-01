@@ -7,27 +7,32 @@ import { useData } from "../context/DataContext";
 
 export default function SchedulePage() {
 
-  const {scheduleData, setScheduleData} = useData()
+  const {scheduleData, setScheduleData, stage} = useData()
 
   useEffect(() => {
-    const fetchSchedule = async () => {
-      try {
-        const res = await fetch('/api/data');
-        const data = await res.json();
+  const fetchSchedule = async () => {
+    try {
+      const res = await fetch("/api/data");
+      const json = await res.json();
 
-        if (data.success) {
-          setScheduleData(data.result);
-          console.log("RS", json.result);
-        } else {
-          console.error(json.error);
-        }
-      } catch (error) {
-        console.error('data fetch failed:', error);
+      if (json.success) {
+        // filter according to stage
+        const filtered = json.result.filter(
+          (item) => item.stage === stage?.username
+        );
+
+        setScheduleData(filtered);
+        console.log("Filtered Schedule:", filtered);
+      } else {
+        console.error(json.error);
       }
-    };
+    } catch (error) {
+      console.error("data fetch failed:", error);
+    }
+  };
 
-    fetchSchedule();
-  }, []);
+  fetchSchedule();
+}, [stage, setScheduleData]); 
 
 
 
